@@ -58,7 +58,7 @@ syn1 = 2 * np.random.random(
 # training step
 # Python2 Note: In the follow command, you may improve
 #   performance by replacing 'range' with 'xrange'.
-for j in range(3000):
+for j in range(3):
 
     # Calculate forward through the network.
     l0 = X
@@ -70,7 +70,12 @@ for j in range(3000):
     if (j % 10000) == 0:  # Only print the error every 10000 steps, to save time and limit the amount of output.
         print("Epoch: {0} Error: {1}".format(j, np.mean(np.abs(l2_error))))
 
+    print("l2error: ", l2_error)
+
     l2_delta = l2_error * nonlin(l2, deriv=True)
+
+    print("delta2: ", l2_delta)
+    print("w2: ", syn1.T)
 
     l1_error = l2_delta.dot(syn1.T)
 
