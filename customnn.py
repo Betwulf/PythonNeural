@@ -24,13 +24,16 @@ train = np.array([[0],
 w1 = np.random.random((3, 4))
 w2 = np.random.random((4, 1))
 
-for epoch in range(9000):
+for epoch in range(9):
     out1 = sigmoid(np.dot(input_data, w1))
     out2 = sigmoid(np.dot(out1, w2))
 
     error2 = train - out2
 
     delta2 = error2 * sigmoid_derivative(out2)
+    delta2alt = error2.dot(sigmoid_derivative(out2))
+
+    print()
 
     error1 = delta2.dot(w2.T)
 
